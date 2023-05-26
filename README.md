@@ -413,45 +413,48 @@ print(f"Команда '{new_command}' добавлена для {animal.name}."
 
 def menu(registry):
 while True:
-print("Меню:")
-print("1. Добавить новое животное")
-print("2. Вывести список всех зарегистрированных животных")
-print("3. Вывести список команд для животного")
-print("4. Обучить животное новой команде")
-print("5. Выход")
-choice = input("Выберите опцию (1-5): ")
-if choice == "1":
-animal_type = input("Введите тип животного (собака/кошка): ")
-name = input("Введите имя животного: ")
-age = int(input("Введите возрастживотного: "))
-if animal_type.lower() == "собака":
-breed = input("Введите породу собаки: ")
-animal = Dog(name, age, breed)
-elif animal_type.lower() == "кошка":
-color = input("Введите цвет кошки: ")
-animal = Cat(name, age, color)
-else:
-print("Неверный тип животного.")
-continue
-registry.add_animal(animal)
-print(f"{animal.name} успешно добавлен в реестр.")
-elif choice == "2":
-registry.list_all_animals()
-elif choice == "3":
-name = input("Введите имя животного: ")
-animal = registry.find_animal_by_name(name)
-if animal:
-print_commands(animal)
-elif choice == "4":
-name = input("Введите имя животного: ")
-animal = registry.find_animal_by_name(name)
-if animal:
-teach_command(animal)
-elif choice == "5":
-break
-else:
-print("Неверный выбор.")
-continue
+    print("Меню:")
+    print("1. Добавить новое животное")
+    print("2. Вывести список всех зарегистрированных животных")
+    print("3. Вывести список команд для животного")
+    print("4. Обучить животное новой команде")
+    print("5. Выход")
+    
+    choice = input("Выберите опцию (1-5): ")
+    
+    if choice == "1":
+        animal_type = input("Введите тип животного (собака/кошка): ")
+        name = input("Введите имя животного: ")
+        age = int(input("Введите возрастживотного: "))
+        if animal_type.lower() == "собака":
+        breed = input("Введите породу собаки: ")
+        animal = Dog(name, age, breed)
+        elif animal_type.lower() == "кошка":
+        color = input("Введите цвет кошки: ")
+        animal = Cat(name, age, color)
+    else:
+        print("Неверный тип животного.")
+        continue
+        registry.add_animal(animal)
+        print(f"{animal.name} успешно добавлен в реестр.")
+    elif choice == "2":
+        registry.list_all_animals()
+    elif choice == "3":
+        name = input("Введите имя животного: ")
+        animal = registry.find_animal_by_name(name)
+        
+    if animal:
+        print_commands(animal)
+    elif choice == "4":
+        name = input("Введите имя животного: ")
+        animal = registry.find_animal_by_name(name)
+    if animal:
+        teach_command(animal)
+    elif choice == "5":
+        break
+    else:
+        print("Неверный выбор.")
+        continue
 
 # Класс Registry
 
